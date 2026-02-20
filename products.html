@@ -57,11 +57,66 @@
         </div>
       </nav>
     </header>
-<div class="mt-20"></div>
+    <div class="mt-20"></div>
     <div
-      class="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+      class="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mx-40"
       id="productsContainer"
     ></div>
+
+    <footer class="bg-gray-900 text-gray-400 mt-12 pt-20 pb-8 overflow-hidden">
+      <div class="mx-40 mr-44 px-10">
+        <div class="flex flex-wrap sm:grid sm:grid-cols-5 justify-between">
+          <div class="mb-12">
+            <h4 class="text-white uppercase mb-6">Categories</h4>
+            <ul class="pl-4 space-y-4">
+              <li>Women</li>
+              <li>Men</li>
+              <li>Shoes</li>
+              <li>Watches</li>
+            </ul>
+          </div>
+          <div class="mb-12">
+            <h4 class="text-white uppercase mb-6">Help</h4>
+            <ul class="pl-4 space-y-4">
+              <li>Track Order</li>
+              <li>Returns</li>
+              <li>Shipping</li>
+              <li>FAQs</li>
+            </ul>
+          </div>
+          <div class="col-span-2 mb-12">
+            <h4 class="text-white uppercase mb-6">Get in Touch</h4>
+            <p class="text-gray-400 mb-4 text-sm">
+              Any questions? Let us know in store at 8th floor, <br />
+              379 Hudson St, New York, NY 10018 <br />
+              or call us on (+1) 96 716 6879
+            </p>
+            <div class="flex space-x-4 text-lg">
+              <a href="#" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" title="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            </div>
+          </div>
+          <div class="mb-12">
+            <h4 class="text-white uppercase mb-6">Newsletter</h4>
+            <form class="flex flex-col space-y-4">
+              <input
+                type="text"
+                placeholder="email@example.com"
+                class="bg-transparent border-b border-gray-500 px-2 py-1 text-gray-200 focus:outline-none"
+              />
+              <button
+                type="submit"
+                class="bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-full"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </footer>
+
     <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
     <el-dialog>
@@ -172,5 +227,12 @@
     </el-dialog>
 
     <script src="js/products.js"></script>
+    <!-- Toast -->
+    <div
+      id="toast"
+      class="fixed top-20 right-6 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg opacity-0 translate-x-10 transition-all duration-500 z-[999]"
+    >
+      Added to cart successfully
+    </div>
   </body>
 </html>

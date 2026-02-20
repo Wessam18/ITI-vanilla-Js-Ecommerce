@@ -5,12 +5,31 @@ if (!localStorage.getItem("loggedInUser")) {
 
 // ================= PRODUCTS =================
 const products = [
-  { id: 1, name: "BMW X6", price: 90000 },
-  { id: 2, name: "Mercedes C-Class", price: 75000 },
-  { id: 3, name: "Audi R8", price: 150000 },
-  { id: 4, name: "Toyota Corolla", price: 25000 },
+  { id: 1, name: "BMW X6", price: 90000, image: "assets/cart1.jpg" },
+  { id: 2, name: "Mercedes C-Class", price: 75000, image: "assets/cart2.jpg" },
+  { id: 3, name: "Audi R8", price: 150000, image: "assets/cart3.jpg" },
+  { id: 4, name: "Toyota Corolla", price: 25000, image: "assets/cart4.jpg" },
+  {
+    id: 5,
+    name: "Range Rover Sport",
+    price: 110000,
+    image: "assets/cart5.jpg",
+  },
+  { id: 6, name: "Porsche Cayenne", price: 130000, image: "assets/cart6.jpg" },
+  { id: 7, name: "Chevrolet Camaro", price: 68000, image: "assets/cart7.jpg" },
+  { id: 8, name: "Ford Mustang GT", price: 72000, image: "assets/cart8.jpg" },
+  { id: 9, name: "Hyundai Tucson", price: 32000, image: "assets/cart9.jpg" },
+  { id: 10, name: "Nissan Patrol", price: 95000, image: "assets/cart10.jpg" },
+  { id: 11, name: "Lexus RX 350", price: 87000, image: "assets/cart11.jpg" },
+  { id: 12, name: "Kia Sportage", price: 28000, image: "assets/cart12.jpg" },
+  {
+    id: 13,
+    name: "Jeep Grand Cherokee",
+    price: 98000,
+    image: "assets/cart13.jpg",
+  },
+  { id: 14, name: "Tesla Model S", price: 140000, image: "assets/cart14.jpg" },
 ];
-
 const container = document.getElementById("productsContainer");
 const cartCount = document.getElementById("cartCount");
 
@@ -25,17 +44,43 @@ function updateCartCount() {
 }
 products.forEach((product) => {
   container.innerHTML += `
-    <div class="bg-white p-6 rounded-xl shadow hover:shadow-xl transition">
-      <h4 class="text-lg font-bold mb-2">${product.name}</h4>
-      <p class="text-[#223A5E] font-semibold text-lg mb-4">$${product.price}</p>
-      <button onclick='addToCart(${JSON.stringify(product)})'
-        class="bg-[#223A5E] text-white px-4 py-2 rounded hover:bg-[#1b2f4b] transition w-full">
-        Add to Cart
-      </button>
+    <div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition duration-500 flex flex-col">
+
+      <!-- Image -->
+<div class="relative overflow-hidden h-56">    
+    <img src="${product.image}" 
+             class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+             alt="${product.name}">
+      </div>
+
+      <!-- Content -->
+      <div class="p-6 flex flex-col flex-grow">
+
+        <h4 class="text-xl font-bold text-gray-800 mb-2">
+          ${product.name}
+        </h4>
+
+        <p class="text-gray-500 mb-4 text-sm">
+          Luxury • Automatic • 2025 Model
+        </p>
+
+        <div class="mt-auto flex items-center justify-between">
+
+          <span class="text-lg font-semibold text-[#223A5E]">
+            $${product.price.toLocaleString()}
+          </span>
+
+          <button onclick='addToCart(${JSON.stringify(product)})'
+            class="bg-[#223A5E] text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+            Add
+          </button>
+
+        </div>
+      </div>
+
     </div>
   `;
 });
-
 function addToCart(product) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -51,8 +96,9 @@ function addToCart(product) {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
   renderCart();
-}
-// ================= SIDE CART LOGIC =================
+
+  showToast(product.name + " added to cart");
+} // ================= SIDE CART LOGIC =================
 
 let cartItemsDiv, totalSpan;
 
@@ -71,39 +117,53 @@ function renderCart() {
   let total = 0;
 
   cart.forEach((item, index) => {
-    let itemTotal = item.price * item.quantity; // السعر لكل عنصر مضروب في الكمية
+    let itemTotal = item.price * item.quantity;
     total += itemTotal;
 
     cartItemsDiv.innerHTML += `
-      <li class="flex py-6">
-        <div class="ml-4 flex flex-1 flex-col">
-          <div class="flex justify-between text-base font-medium text-gray-900">
-            <h3>${item.name}</h3>
-            <p class="ml-4">$${itemTotal}</p> <!-- السعر مضروب في الكمية -->
-          </div>
+  <li class="flex py-6 space-x-4">
+    
+    <!-- Image -->
+    <div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg border">
+      <img src="${item.image}"
+        class="h-full w-full object-cover">
+    </div>
 
-          <div class="flex items-center justify-between mt-4">
-            <div class="flex items-center space-x-2">
-              <button onclick="decreaseQty(${index})"
-                class="px-2 bg-gray-200 rounded">-</button>
+    <!-- Info -->
+    <div class="flex flex-1 flex-col">
+      
+      <div class="flex justify-between text-base font-medium text-gray-900">
+        <h3>${item.name}</h3>
+        <p>$${itemTotal.toLocaleString()}</p>
+      </div>
 
-              <span>${item.quantity}</span>
+      <p class="mt-1 text-sm text-gray-500">
+        $${item.price.toLocaleString()} × ${item.quantity}
+      </p>
 
-              <button onclick="increaseQty(${index})"
-                class="px-2 bg-gray-200 rounded">+</button>
-            </div>
+      <div class="flex items-center justify-between mt-3">
+        
+        <div class="flex items-center space-x-2">
+          <button onclick="decreaseQty(${index})"
+            class="px-2 bg-gray-200 rounded hover:bg-gray-300">-</button>
 
-            <button onclick="removeItem(${index})"
-              class="text-indigo-600 hover:text-indigo-500">
-              Remove
-            </button>
-          </div>
+          <span>${item.quantity}</span>
+
+          <button onclick="increaseQty(${index})"
+            class="px-2 bg-gray-200 rounded hover:bg-gray-300">+</button>
         </div>
-      </li>
-    `;
+        <button onclick="removeItem(${index})"
+          class="text-red-500 hover:text-red-600 text-sm">
+          Remove
+        </button>
+
+      </div>
+    </div>
+  </li>
+`;
   });
 
-  totalSpan.innerText = total; // التوتال النهائي
+  totalSpan.innerText = total;
 }
 
 function removeItem(index) {
@@ -145,9 +205,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const drawer = document.getElementById("drawer");
   drawer.addEventListener("toggle", () => {
     if (drawer.open) {
-      renderCart(); // أول ما الدروار يفتح، نرندر الكارت من localStorage
+      renderCart();
     }
   });
 });
 
 updateCartCount();
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.innerText = message;
+
+  toast.classList.remove("opacity-0", "translate-x-10");
+  toast.classList.add("opacity-100", "translate-x-0");
+
+  setTimeout(() => {
+    toast.classList.remove("opacity-100", "translate-x-0");
+    toast.classList.add("opacity-0", "translate-x-10");
+  }, 2000);
+}
