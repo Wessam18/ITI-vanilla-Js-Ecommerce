@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Car Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1"
+      type="module"
+    ></script>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body class="">
+    <!-- ================= NAVBAR ================= -->
+    <header
+      class="header w-full fixed top-0 left-0 z-50 h-20 bg-transparent transition-all duration-300 flex items-center"
+    >
+      <nav
+        class="flex justify-between items-center w-full max-w-[1400px] mx-36 px-6 md:px-10"
+      >
+        <a href="#">
+          <img src="./assets/logo.png" alt="logo" class="w-28" />
+        </a>
+        <ul class="flex items-center space-x-6">
+          <li>
+            <a href="home.html" class="text-gray-800 hover:text-blue-600"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="products.html" class="text-gray-800 hover:text-blue-600"
+              >Shop</a
+            >
+          </li>
+        </ul>
+        <div class="flex items-center space-x-4">
+          <div
+            id="themeToggle"
+            class="cursor-pointer transition-transform duration-300 hover:rotate-12"
+          >
+            <i class="fa-solid fa-moon text-2xl text-gray-800"></i>
+          </div>
+
+          <button command="show-modal" commandfor="drawer" class="relative">
+            🛒
+            <span
+              id="cartCount"
+              class="absolute -top-2 -right-3 bg-red-500 text-xs px-2 rounded-full"
+            >
+              0
+            </span>
+          </button>
+
+          <button
+            onclick="logout()"
+            class="bg-white text-[#223A5E] px-4 py-1 rounded hover:bg-gray-200"
+          >
+            Logout
+          </button>
+        </div>
+      </nav>
+    </header>
+    <!-- ================= HERO ================= -->
+    <main
+      id="hero"
+      class="hero relative w-full min-h-screen flex items-center justify-center px-8 overflow-hidden bg-cover bg-center"
+    >
+      <!-- arrows -->
+      <div
+        id="prevSlide"
+        class="hero-arrow left absolute top-1/2 left-8 transform -translate-y-1/2 text-white text-3xl cursor-pointer opacity-0 transition-opacity duration-300 z-10 hover:text-blue-500"
+      >
+        <i class="fa-solid fa-chevron-left"></i>
+      </div>
+      <div
+        id="nextSlide"
+        class="hero-arrow right absolute top-1/2 right-8 transform -translate-y-1/2 text-white text-3xl cursor-pointer opacity-0 transition-opacity duration-300 z-10 hover:text-blue-500"
+      >
+        <i class="fa-solid fa-chevron-right"></i>
+      </div>
+
+      <!-- content -->
+      <div class="hero-content relative z-20 text-left md:text-left max-w-lg">
+        <h1
+          id="hero-title"
+          class="hero-title text-4xl md:text-5xl font-bold text-white opacity-0"
+        >
+          Men New-Season
+        </h1>
+        <p
+          id="hero-text"
+          class="hero-text mt-4 text-lg md:text-xl text-white opacity-0"
+        >
+          Discover the best products at unbeatable prices.
+        </p>
+        <a
+          id="hero-btn"
+          href="products.html"
+          class="hero-btn inline-block mt-6 px-8 py-3 rounded-full bg-black text-white font-semibold opacity-0 hover:bg-blue-600 transition-all duration-300"
+        >
+          Shop Now
+        </a>
+      </div>
+
+      <!-- overlay for darkening bg -->
+      <div class="absolute inset-0 bg-black/30 z-10"></div>
+    </main>
+
+    <!-- ================= CATEGORIES ================= -->
+    <section class="py-16 px-6 max-w-6xl mx-auto">
+      <h3 class="text-2xl font-bold text-center mb-10 text-[#223A5E]">
+        Explore Categories
+      </h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div
+          class="bg-white rounded-xl shadow hover:shadow-lg transition p-6 text-center"
+        >
+          <h4 class="text-xl font-semibold mb-2">SUV</h4>
+          <p class="text-gray-500 mb-4">Powerful & Spacious</p>
+          <a
+            href="products.html"
+            class="text-[#223A5E] font-semibold underline"
+          >
+            View Cars
+          </a>
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow hover:shadow-lg transition p-6 text-center"
+        >
+          <h4 class="text-xl font-semibold mb-2">Sedan</h4>
+          <p class="text-gray-500 mb-4">Comfort & Elegance</p>
+          <a
+            href="products.html"
+            class="text-[#223A5E] font-semibold underline"
+          >
+            View Cars
+          </a>
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow hover:shadow-lg transition p-6 text-center"
+        >
+          <h4 class="text-xl font-semibold mb-2">Sports</h4>
+          <p class="text-gray-500 mb-4">Speed & Performance</p>
+          <a
+            href="products.html"
+            class="text-[#223A5E] font-semibold underline"
+          >
+            View Cars
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- ================= FEATURED CARS ================= -->
+    <section class="py-16 px-6 max-w-6xl mx-auto">
+      <h3 class="text-2xl font-bold text-center mb-10 text-[#223A5E]">
+        Featured Cars
+      </h3>
+
+      <div
+        id="productsContainer"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+      ></div>
+    </section>
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-[#223A5E] text-white py-8 text-center">
+      <p>© 2026 AutoLux. All rights reserved.</p>
+    </footer>
+    <!-- ================= SIDE CART ================= -->
+
+    <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
+
+    <el-dialog>
+      <dialog
+        id="drawer"
+        aria-labelledby="drawer-title"
+        class="fixed inset-0 size-auto max-h-none max-w-none overflow-hidden bg-transparent not-open:hidden backdrop:bg-transparent"
+      >
+        <el-dialog-backdrop
+          class="absolute inset-0 bg-gray-500/75 transition-opacity duration-500 ease-in-out data-closed:opacity-0"
+        ></el-dialog-backdrop>
+
+        <div
+          tabindex="0"
+          class="absolute inset-0 pl-10 focus:outline-none sm:pl-16"
+        >
+          <el-dialog-panel
+            class="ml-auto block size-full max-w-md transform transition duration-500 ease-in-out data-closed:translate-x-full sm:duration-700"
+          >
+            <div
+              class="flex h-full flex-col overflow-y-auto bg-white shadow-xl"
+            >
+              <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+                <div class="flex items-start justify-between">
+                  <h2
+                    id="drawer-title"
+                    class="text-lg font-medium text-gray-900"
+                  >
+                    Shopping cart
+                  </h2>
+                  <div class="ml-3 flex h-7 items-center">
+                    <button
+                      type="button"
+                      command="close"
+                      commandfor="drawer"
+                      class="relative -m-2 p-2 text-gray-400 hover:text-gray-500"
+                    >
+                      <span class="absolute -inset-0.5"></span>
+                      <span class="sr-only">Close panel</span>
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        data-slot="icon"
+                        aria-hidden="true"
+                        class="size-6"
+                      >
+                        <path
+                          d="M6 18 18 6M6 6l12 12"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="mt-8">
+                  <div class="flow-root">
+                    <ul
+                      id="cartItems"
+                      role="list"
+                      class="-my-6 divide-y divide-gray-200"
+                    ></ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
+                <div
+                  class="flex justify-between text-base font-medium text-gray-900"
+                >
+                  <p>Subtotal</p>
+                  <p>$<span id="total">0</span></p>
+                </div>
+                <p class="mt-0.5 text-sm text-gray-500">
+                  Shipping and taxes calculated at checkout.
+                </p>
+                <div class="mt-6">
+                  <a
+                    href="#"
+                    class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-xs hover:bg-indigo-700"
+                    >Checkout</a
+                  >
+                </div>
+                <div
+                  class="mt-6 flex justify-center text-center text-sm text-gray-500"
+                >
+                  <p>
+                    or
+                    <button
+                      type="button"
+                      command="close"
+                      commandfor="drawer"
+                      class="font-medium text-indigo-600 hover:text-indigo-500"
+                    >
+                      Continue Shopping
+                      <span aria-hidden="true"> &rarr;</span>
+                    </button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </el-dialog-panel>
+        </div>
+      </dialog>
+    </el-dialog>
+
+    <script src="js/products.js"></script>
+    <script src="js/hero.js"></script>
+
+    <script>
+      if (!localStorage.getItem("loggedInUser")) {
+        window.location.href = "login.html";
+      }
+
+      function logout() {
+        localStorage.removeItem("loggedInUser");
+        window.location.href = "login.html";
+      }
+    </script>
+  </body>
+</html>

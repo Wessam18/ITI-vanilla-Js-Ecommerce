@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+<div class="flex w-full max-w-4xl flex-col md:flex-row gap-4 px-4">
+  <div class="w-full bg-white p-8 rounded-xl shadow-lg">
+
+    <p class="mt-1 text-3xl font-bold">
+      THE COMPLETE RENTAL SOLUTION – CENTRALIZED AND EFFORTLESS
+    </p>
+
+    <p class="mt-2 text-sm font-semibold text-[#808080]">
+      Sign up to start your journey
+    </p>
+
+    <form id="registerForm" class="flex flex-col mt-6">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <input id="firstName" type="text" placeholder="First Name"
+          class="p-3 border rounded w-full" required />
+
+        <input id="lastName" type="text" placeholder="Last Name"
+          class="p-3 border rounded w-full" required />
+
+        <input id="email" type="email" placeholder="Email"
+          class="p-3 border rounded w-full col-span-1 sm:col-span-2" required />
+
+        <input id="password" type="password" placeholder="Password"
+          class="p-3 border rounded w-full col-span-1 sm:col-span-2" required />
+
+      </div>
+
+      <button type="submit"
+        class="mt-6 bg-[#223A5E] text-white py-3 rounded-lg hover:bg-[#223A5E]/90 transition">
+        Sign Up
+      </button>
+
+      <p class="mt-4 text-center text-[16px] text-[#223A5E]">
+        Have an account?
+        <a href="login.html" class="underline">Login</a>
+      </p>
+
+      <p id="message" class="text-red-500 text-sm mt-3 text-center"></p>
+
+    </form>
+
+  </div>
+</div>
+
+<script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+<div class="w-full max-w-md bg-white p-8 rounded-xl shadow-lg">
+
+  <p class="text-3xl font-bold">
+    Welcome Back
+  </p>
+
+  <p class="mt-2 text-sm font-semibold text-[#808080]">
+    Login to your account
+  </p>
+
+  <form id="loginForm" class="flex flex-col mt-6">
+
+    <input id="loginEmail" type="email" placeholder="Email"
+      class="p-3 border rounded mb-4" required />
+
+    <input id="loginPassword" type="password" placeholder="Password"
+      class="p-3 border rounded mb-4" required />
+
+    <button type="submit"
+      class="bg-[#223A5E] text-white py-3 rounded-lg hover:bg-[#223A5E]/90 transition">
+      Login
+    </button>
+
+    <p class="mt-4 text-center text-[16px] text-[#223A5E]">
+      Don’t have an account?
+      <a href="index.html" class="underline">Register</a>
+    </p>
+
+    <p id="loginMessage" class="text-red-500 text-sm mt-3 text-center"></p>
+
+  </form>
+
+</div>
+
+<script src="js/auth.js"></script>
+</body>
+</html>

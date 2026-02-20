@@ -1,0 +1,41 @@
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-title {
+  animation: slideDown 0.8s ease forwards;
+}
+
+.animate-text {
+  animation: slideUp 0.8s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.animate-btn {
+  animation: slideUp 0.8s ease forwards;
+  animation-delay: 0.6s;
+}
+
+/* arrows opacity on hover */
+.hero:hover .hero-arrow {
+  opacity: 1;
+}
+/* default state */
+.header {
+  background-color: transparent;
+  height: 5rem; /* h-20 */
+  transition: all 0.3s ease;
+}
+
+/* scroll state */
+.header.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  height: 4.5rem; /* Optional: تقلل ارتفاع الهيدر عند السكروول */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
