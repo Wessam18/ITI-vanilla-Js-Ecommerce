@@ -29,13 +29,18 @@
 /* default state */
 .header {
   background-color: transparent;
-  height: 5rem; /* h-20 */
   transition: all 0.3s ease;
 }
 
 /* scroll state */
 .header.scrolled {
   background-color: rgba(255, 255, 255, 0.95);
-  height: 4.5rem; /* Optional: تقلل ارتفاع الهيدر عند السكروول */
+  height: 4.5rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.hero:hover .hero-arrow {
+  opacity: 1; 
+}
+.fa-solid {
+  color: white;
 }

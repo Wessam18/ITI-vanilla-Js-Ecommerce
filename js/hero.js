@@ -5,28 +5,27 @@ const btn = document.getElementById("hero-btn");
 
 const slides = [
   {
-    image: "images/slide1.webp",
-    title: "Women Collection 2026",
-    text: "NEW SEASON",
-    btn: "Shop Now",
+    image: "assets/car1.jpg",
+    title: "Sports Car 2026",
+    text: "An exhilarating driving experience",
+    btn: "Discover Now",
     btnLink: "products.html",
   },
   {
-    image: "images/slide2.webp",
-    title: "New Men Season",
-    text: "JACKETS & COATS",
-    btn: "Shop Now",
+    image: "assets/car2.jpg",
+    title: "New SUV",
+    text: "Comfort and power on the road",
+    btn: "Browse Cars",
     btnLink: "products.html",
   },
   {
-    image: "images/slide3.webp",
-    title: "Men Collection 2026",
-    text: "NEW ARRIVALS",
-    btn: "Shop Now",
+    image: "assets/car1.jpg",
+    title: "Modern Electric Car",
+    text: "Innovation and high efficiency",
+    btn: "Discover Now",
     btnLink: "products.html",
   },
 ];
-
 let index = 0;
 
 function animateContent() {
@@ -70,7 +69,6 @@ setInterval(nextSlide, 5000);
 
 
 const header = document.querySelector(".header");
-
 window.addEventListener("scroll", () => {
   if (window.scrollY > 50) {
     header.classList.add("scrolled");

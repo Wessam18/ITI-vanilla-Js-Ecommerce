@@ -10,27 +10,31 @@
       type="module"
     ></script>
     <link rel="stylesheet" href="index.css" />
+    <script
+      src="https://kit.fontawesome.com/6183ab3892.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body class="">
     <!-- ================= NAVBAR ================= -->
     <header
-      class="header w-full fixed top-0 left-0 z-50 h-20 bg-transparent transition-all duration-300 flex items-center"
+      class="header w-full fixed top-0 left-0 z-50 h-16 bg-transparent transition-all duration-300 flex items-center"
     >
       <nav
-        class="flex justify-between items-center w-full max-w-[1400px] mx-36 px-6 md:px-10"
+        class="flex justify-between items-center w-full max-w-[1400px] ml-28 mr-40 px-6 md:px-10"
       >
         <a href="#">
-          <img src="./assets/logo.png" alt="logo" class="w-28" />
+          <img src="./assets/logo.png" alt="logo" class="w-48" />
         </a>
-        <ul class="flex items-center space-x-6">
+        <ul class="flex items-center space-x-6 text-sm font-medium ">
           <li>
-            <a href="home.html" class="text-gray-800 hover:text-blue-600"
+            <a href="home.html" class=""
               >Home</a
             >
           </li>
           <li>
-            <a href="products.html" class="text-gray-800 hover:text-blue-600"
+            <a href="products.html" class=""
               >Shop</a
             >
           </li>
@@ -40,11 +44,11 @@
             id="themeToggle"
             class="cursor-pointer transition-transform duration-300 hover:rotate-12"
           >
-            <i class="fa-solid fa-moon text-2xl text-gray-800"></i>
+            <i class="fa-solid fa-moon text-2xl text-black"></i>
           </div>
 
           <button command="show-modal" commandfor="drawer" class="relative">
-            🛒
+            <i class="fa-solid fa-cart-arrow-down text-2xl  text-black"></i>
             <span
               id="cartCount"
               class="absolute -top-2 -right-3 bg-red-500 text-xs px-2 rounded-full"
@@ -53,39 +57,36 @@
             </span>
           </button>
 
-          <button
-            onclick="logout()"
-            class="bg-white text-[#223A5E] px-4 py-1 rounded hover:bg-gray-200"
-          >
-            Logout
-          </button>
+          <div onclick="logout()" class="text-white px-4 py-1">
+            <i class="fa-solid fa-right-from-bracket text-2xl  text-black"></i>
+          </div>
         </div>
       </nav>
     </header>
     <!-- ================= HERO ================= -->
     <main
       id="hero"
-      class="hero relative w-full min-h-screen flex items-center justify-center px-8 overflow-hidden bg-cover bg-center"
+      class="hero relative w-full min-h-screen flex items-center  px-8 overflow-hidden bg-cover bg-center no-repeat"
     >
       <!-- arrows -->
       <div
         id="prevSlide"
-        class="hero-arrow left absolute top-1/2 left-8 transform -translate-y-1/2 text-white text-3xl cursor-pointer opacity-0 transition-opacity duration-300 z-10 hover:text-blue-500"
+        class="hero-arrow left absolute top-1/2 left-28 transform -translate-y-1/2 text-white text-3xl cursor-pointer opacity-100 transition-opacity duration-300 z-10 hover:text-blue-500"
       >
         <i class="fa-solid fa-chevron-left"></i>
       </div>
       <div
         id="nextSlide"
-        class="hero-arrow right absolute top-1/2 right-8 transform -translate-y-1/2 text-white text-3xl cursor-pointer opacity-0 transition-opacity duration-300 z-10 hover:text-blue-500"
+        class="hero-arrow right absolute top-1/2 right-28 transform -translate-y-1/2 text-white text-3xl cursor-pointer opacity-100 transition-opacity duration-300 z-10 hover:text-blue-500"
       >
         <i class="fa-solid fa-chevron-right"></i>
       </div>
 
       <!-- content -->
-      <div class="hero-content relative z-20 text-left md:text-left max-w-lg">
+      <div class="flex flex-col z-20 max-w-lg mx-40">
         <h1
           id="hero-title"
-          class="hero-title text-4xl md:text-5xl font-bold text-white opacity-0"
+          class="text-start text-white text-4xl md:text-5xl font-bold opacity-0"
         >
           Men New-Season
         </h1>
@@ -103,9 +104,6 @@
           Shop Now
         </a>
       </div>
-
-      <!-- overlay for darkening bg -->
-      <div class="absolute inset-0 bg-black/30 z-10"></div>
     </main>
 
     <!-- ================= CATEGORIES ================= -->
@@ -167,8 +165,57 @@
       ></div>
     </section>
     <!-- ================= FOOTER ================= -->
-    <footer class="bg-[#223A5E] text-white py-8 text-center">
-      <p>© 2026 AutoLux. All rights reserved.</p>
+    <footer class="bg-gray-900 text-gray-400 mt-12 pt-20 pb-8 overflow-hidden">
+      <div class="mx-40 mr-44 px-10">
+        <div class="flex flex-wrap sm:grid sm:grid-cols-5 justify-between">
+          <div class=" mb-12">
+            <h4 class="text-white uppercase mb-6">Categories</h4>
+            <ul class="pl-4 space-y-4">
+              <li>Women</li>
+              <li>Men</li>
+              <li>Shoes</li>
+              <li>Watches</li>
+            </ul>
+          </div>
+          <div class=" mb-12">
+            <h4 class="text-white uppercase mb-6">Help</h4>
+            <ul class="pl-4 space-y-4">
+              <li>Track Order</li>
+              <li>Returns</li>
+              <li>Shipping</li>
+              <li>FAQs</li>
+            </ul>
+          </div>
+          <div class="col-span-2 mb-12">
+            <h4 class="text-white uppercase mb-6">Get in Touch</h4>
+            <p class="text-gray-400 mb-4 text-sm">
+              Any questions? Let us know in store at 8th floor, <br> 379 Hudson St,
+              New York, NY 10018 <br> or call us on (+1) 96 716 6879
+            </p>
+            <div class="flex space-x-4 text-lg">
+              <a href="#"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+            </div>
+          </div>
+          <div class=" mb-12">
+            <h4 class="text-white uppercase mb-6">Newsletter</h4>
+            <form class="flex flex-col space-y-4">
+              <input
+                type="text"
+                placeholder="email@example.com"
+                class="bg-transparent border-b border-gray-500 px-2 py-1 text-gray-200 focus:outline-none"
+              />
+              <button
+                type="submit"
+                class="bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-full"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     </footer>
     <!-- ================= SIDE CART ================= -->
 
@@ -230,7 +277,6 @@
                     </button>
                   </div>
                 </div>
-
                 <div class="mt-8">
                   <div class="flow-root">
                     <ul
@@ -241,7 +287,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
                 <div
                   class="flex justify-between text-base font-medium text-gray-900"
